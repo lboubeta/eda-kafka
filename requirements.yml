@@ -1,0 +1,9 @@
+---
+collections:
+  - name: community.general
+  - name: infra.aap_configuration
+  - name: ansible.controller
+  - name: ansible.hub
+  - name: ansible.platform
+  - name: community.kafka
+  - name: ansible.eda

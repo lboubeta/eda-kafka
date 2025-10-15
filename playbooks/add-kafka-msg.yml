@@ -1,0 +1,20 @@
+---
+
+- name: Send Kafka Message
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    kafka_host: "{{ kafka_broker }}:{{ kafka_port | default(9092) }}"   # comma-separated or single host:port
+    kafka_value: "Hello, this is a test message from Ansible Playbook!"
+  tasks:
+    - name: Produce message to Kafka topic
+      community.kafka.kafka_produce:
+        topic: "{{ kafka_topic }}"
+        value: "{{ kafka_value }}"
+        bootstrap_servers: "{{ kafka_host }}"
+      register: produce_result
+
+    - name: Display produce result
+      ansible.builtin.debug:
+        var: produce_result
