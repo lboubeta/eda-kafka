@@ -1,7 +1,7 @@
 ---
 
 - name: Run Kafka Debugger
-  hosts: localhost
+  hosts: all
   sources:
     - ansible.eda.kafka:
         host: "{{ kafka_broker | default('localhost') }}"
