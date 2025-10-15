@@ -5,5 +5,4 @@ collections:
   - name: ansible.controller
   - name: ansible.hub
   - name: ansible.platform
-  - name: community.kafka
   - name: ansible.eda
