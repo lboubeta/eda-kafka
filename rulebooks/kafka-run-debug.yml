@@ -1,3 +1,5 @@
+---
+
 - name: Run Kafka Debugger
   hosts: localhost
   sources:
@@ -5,21 +7,21 @@
         host: "{{ kafka_broker | default('localhost') }}"
         port: "{{ kafka_port | default(9092) }}"
         topics:
-          - eda
+          - "eda"
 
   rules:
     - name: "When a message is received on topic 'eda', print its content"
       condition: event.topic == "eda"
       actions:
         run_job_template:
-          name: Print the message content
-          organization: CaC
+          name: Debug message from Kafka
+          organization: OCP
           job_args:
             extra_vars:
-              message: "{{ event.value }}"
-              event_headers: "{{ event.headers }}"
-              event_key: "{{ event.key }}"
-              event_partition: "{{ event.partition }}"
-              event_offset: "{{ event.offset }}"
-              event_timestamp: "{{ event.timestamp }}"
-              event_topic: "{{ event.topic }}"
+              kafka_message: "{{ event.value }}"
+              kafka_event_headers: "{{ event.headers }}"
+              kafka_event_key: "{{ event.key }}"
+              kafka_event_partition: "{{ event.partition }}"
+              kafka_event_offset: "{{ event.offset }}"
+              kafka_event_timestamp: "{{ event.timestamp }}"
+              kafka_event_topic: "{{ event.topic }}"
