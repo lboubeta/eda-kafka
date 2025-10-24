@@ -3,23 +3,7 @@
 - name: Debug Kafka Message
   hosts: localhost
   gather_facts: false
-  vars:
-    kafka_message: "{{ event.value }}"
-    kafka_event_headers: "{{ event.headers }}"
-    kafka_event_key: "{{ event.key }}"
-    kafka_event_partition: "{{ event.partition }}"
-    kafka_event_offset: "{{ event.offset }}"
-    kafka_event_timestamp: "{{ event.timestamp }}"
-    kafka_event_topic: "{{ event.topic }}"
   tasks:
-
-    - name: Display produce result
+    - name: Print received Kafka message
       ansible.builtin.debug:
-        msg:
-          - "Message: {{ kafka_message }}"
-          - "Headers: {{ kafka_event_headers }}"
-          - "Key: {{ kafka_event_key }}"
-          - "Partition: {{ kafka_event_partition }}"
-          - "Offset: {{ kafka_event_offset }}"
-          - "Timestamp: {{ kafka_event_timestamp }}"
-          - "Topic: {{ kafka_event_topic }}"
+        var: event

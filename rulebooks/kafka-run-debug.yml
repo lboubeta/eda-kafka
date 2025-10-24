@@ -19,3 +19,8 @@
       actions:
         - debug:
             msg: "Received message on topic 'eda': \n {{ event }}"
+
+        - run_job_template:
+            name: "Debug Kafka Message"
+            wait: false
+            organization: "OCP"
