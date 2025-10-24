@@ -24,3 +24,5 @@
             name: "Debug Kafka Message"
             wait: false
             organization: "OCP"
+            extra_vars:
+              event: "{{ event }}"
