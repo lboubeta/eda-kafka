@@ -6,4 +6,4 @@
   tasks:
     - name: Print received Kafka message
       ansible.builtin.debug:
-        var: event
+        var: ansible_eda.event
